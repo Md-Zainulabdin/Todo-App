@@ -12,6 +12,9 @@ addBtn.addEventListener('click',
     alert('Please Add a task.')
   }else{
     addList(); 
+    if (listBox.children[0].className == "emptyMsg"){
+        listBox.children[0].remove()
+    }
 }
 })
 //main logic of adding todo list..
@@ -33,6 +36,12 @@ const addList = () =>{
         'click',
         () => {
             list.remove();
+           if(listBox.children.length <= 0){
+                let newMsg = document.createElement('span');
+                newMsg.classList.add('emptyMsg')
+                newMsg.innerText = 'Please Enter Some Task..';
+                listBox.appendChild(newMsg);
+            }
         }
     )
     clearFeild()
